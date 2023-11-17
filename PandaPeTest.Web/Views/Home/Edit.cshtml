@@ -1,0 +1,121 @@
+﻿@model PandaPeTest.Web.CandidateDetails
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar candidato</h1>
+
+<h4>Candidato</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Candidate.IdCandidate" class="control-label"></label>
+                <input asp-for="Candidate.IdCandidate" class="form-control" />
+                <span asp-validation-for="Candidate.IdCandidate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.Name" class="control-label"></label>
+                <input asp-for="Candidate.Name" class="form-control" />
+                <span asp-validation-for="Candidate.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.SurName" class="control-label"></label>
+                <input asp-for="Candidate.SurName" class="form-control" />
+                <span asp-validation-for="Candidate.SurName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.BirthDate" class="control-label"></label>
+                <input asp-for="Candidate.BirthDate" class="form-control" />
+                <span asp-validation-for="Candidate.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.Email" class="control-label"></label>
+                <input asp-for="Candidate.Email" class="form-control" />
+                <span asp-validation-for="Candidate.Email" class="text-danger"></span>
+            </div>
+
+            <h1>Experiencia</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            IdExperiencia
+                        </th>
+                        <th>
+                            IdCandidato
+                        </th>
+                        <th>
+                            Compañia
+                        </th>
+                        <th>
+                            Puesto
+                        </th>
+                        <th>
+                            Descripcion
+                        </th>
+                        <th>
+                            Salario
+                        </th>
+                        <th>
+                            Fecha Inicio
+                        </th>
+                        <th>
+                            Fecha finalizacion
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Experiences)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdCandidateExperience)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdCandidate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Company)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Job)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Salary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BeginDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Eliminar", "DeleteExperience", new { id = item.IdCandidateExperience })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a lista de candidatos</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

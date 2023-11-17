@@ -1,0 +1,50 @@
+﻿@model PandaPeTest.Web.CanidateExperiences
+
+@{
+    ViewData["Title"] = "DeleteExperience";
+}
+
+<h1>Eliminar experiencia</h1>
+
+<h3>Esta seguro que desea eliminar la experiencia?</h3>
+<div>
+    <h4>Experiencia</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCandidateExperience)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCandidateExperience)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Job)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Job)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteExperience">
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Candidates">Back to List</a>
+    </form>
+</div>
